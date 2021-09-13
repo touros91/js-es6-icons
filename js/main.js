@@ -178,7 +178,7 @@ console.log(selectOptions);
 
 const category = document.getElementById("categoria");
 
-tramite il metodo .forEach creo le 3 options della select nella pagina HTML
+// tramite il metodo .forEach creo le 3 options della select nella pagina HTML
 
 selectOptions.forEach(
 	(element) => {
