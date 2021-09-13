@@ -119,41 +119,78 @@ const icons = [
 	},
   ];
 
-const icone = document.getElementById("contenitore-carte");
-
-const cards = icons.forEach(
-	(element) => {
-		const {family, prefix, name} = element;
-		icone.innerHTML += `
-		<div class="icons"> 
-		  	<i class="${family} ${prefix}${name}"></i>
-			<div class="black">${name}</div>
-		</div>`;
-	}
-);
-
-// Coloriamo le icone per tipo
-
 const colors = {
 	"food": "yellow",
 	"animal": "red",
 	"beverage": "green"
 }
 
-const iconsColored = [];
+const icone = document.getElementById("contenitore-carte");
 
-icons.forEach(
+const stampa = (array, contenitore) => {
+	contenitore.innerHTML = "";
+	array.forEach(
+		(element) => {
+			const {family, prefix, name, color} = element;
+			contenitore.innerHTML += `
+			<div class="icons"> 
+				  <i class="${family} ${prefix}${name}" style="color:${color}"></i>
+				<div class="black">${name}</div>
+			</div>`;
+		}
+	);
+}
+
+stampa(icons, icone);
+
+// Coloriamo le icone per tipo
+
+const iconsColored = icons.map(
 	(element) => {
-		iconsColored.push(
-			{
+		return {
 			...element,
 			color : colors[element.category]
 			}
-		);
 	}
 );
 
 console.log(iconsColored);
 
+stampa(iconsColored, icone);
 
+// // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
+
+const selectOptions = [];
+
+iconsColored.forEach(
+	(element) => {
+		if ( selectOptions.includes(element.category) == false ) {
+			selectOptions.push(element.category);
+		}
+	}
+);
+
+console.log(selectOptions);
+
+const category = document.getElementById("categoria");
+
+selectOptions.forEach(
+	(element) => {
+		category.innerHTML += `<option value="${element}">${element}</option>`;	
+	}
+);
+
+category.addEventListener("change",
+	function() {
+		const iconsFiltered = iconsColored.filter(
+			(element) => {
+				if (category.value == element.category || category.value == "") {
+					return true;
+				}
+				return false;
+				}
+		);
+		stampa(iconsFiltered, icone);
+	}
+);
 
