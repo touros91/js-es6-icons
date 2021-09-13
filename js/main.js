@@ -6,7 +6,7 @@
 // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
 
 
-// Partendo dalla seguente struttura dati , mostriamo in pagina tutte le icone disponibili come da layout.
+// 1. Partendo dalla seguente struttura dati , mostriamo in pagina tutte le icone disponibili come da layout.
 
 const icons = [
 	{
@@ -127,6 +127,8 @@ const colors = {
 
 const icone = document.getElementById("contenitore-carte");
 
+// creo la funzione che stampa nella pagina html le carte contenenti le icone 
+
 const stampa = (array, contenitore) => {
 	contenitore.innerHTML = "";
 	array.forEach(
@@ -143,7 +145,9 @@ const stampa = (array, contenitore) => {
 
 stampa(icons, icone);
 
-// Coloriamo le icone per tipo
+//2. Coloriamo le icone per tipo
+
+// tramite il metodo .map ottengo un nuovo array composto dagli oggetti dell'array iniziale con in più la proprietà "color"
 
 const iconsColored = icons.map(
 	(element) => {
@@ -154,13 +158,13 @@ const iconsColored = icons.map(
 	}
 );
 
-console.log(iconsColored);
-
 stampa(iconsColored, icone);
 
-// // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
+// 3. Creiamo una select con i tipi di icone e usiamola per filtrare le icone
 
 const selectOptions = [];
+
+// tramite il metodo .forEach creo un array con i valori delle 3 diverse categorie senza farle ripetere per ogni oggetto 
 
 iconsColored.forEach(
 	(element) => {
@@ -174,11 +178,15 @@ console.log(selectOptions);
 
 const category = document.getElementById("categoria");
 
+tramite il metodo .forEach creo le 3 options della select nella pagina HTML
+
 selectOptions.forEach(
 	(element) => {
 		category.innerHTML += `<option value="${element}">${element}</option>`;	
 	}
 );
+
+// creo l'evento "change" che al cambio delle options della select nella pagina html mostra le icone filtrate per categoria, per fare questo uso il metodo .filter per filtrare per ogni categoria diversa le varie icone che appartengono a quella categoria
 
 category.addEventListener("change",
 	function() {
