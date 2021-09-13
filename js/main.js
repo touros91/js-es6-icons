@@ -119,7 +119,7 @@ const cards = icons.forEach(
 		icone.innerHTML += `
 		<div class="icons"> 
 		  	<i class="${element.family} ${element.prefix}${element.name}"></i>
-			<div class="black">${element.category}</div>
+			<div class="black">${element.name}</div>
 		</div>`;
 	}
 );
