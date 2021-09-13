@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Acme', sans-serif;
+    font-family: 'Rubik', sans-serif;
+    height: 100vh;
+}
+
+/* header */
+.logo {
+    font-family: 'Acme', sans-serif;
+    font-size: 40px;
+    color: rgb(41, 177, 221);
+    padding: 10px 0 0 10px;
+}
+
+.header-bottom {
+    text-align: center;
+    background-color: rgb(41, 177, 221);
+    padding: 20px;
+    color: white;
+}
+
+/* main  */
+
+main {
+    height: calc(100% - 120px);
+    background-color: lightgrey;
+    overflow-y: auto;
+}
+
+.carte {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% - 10px);
+    margin: 5px;
+}
+
+.icons {
+    width: 200px;
+    height: 80px;
+    background-color: white;
+    text-align: center;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 2px 2px grey;
+    padding: 20px;
+}
+
+i {
+    font-size: 25px;
+    color: yellow;
+}
+
+span {
+    display: block;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.black {
+    color: black;
+    font-size: 10px;
+}
+
